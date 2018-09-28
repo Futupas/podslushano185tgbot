@@ -1,6 +1,6 @@
 <?php
     function SendMessage($chatid, $text) {
-        $response = file_get_contents('https://api.telegram.org/bot'.getenv('bot_token').'/sendMessage?chat_id='.$chatid.'&text='.$text);
+        $response = file_get_contents('https://api.telegram.org/bot'.getenv('bot_token').'/sendMessage?chat_id='.$chatid.'&text='.urlencode($text));
     };
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -31,6 +31,8 @@
         }
 
         SendMessage('@podslushano185', $msg);
+
+        http_response_code(200);
 
     } else {
         echo 'Podslushano185';
