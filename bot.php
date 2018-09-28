@@ -14,7 +14,7 @@
         $response = file_get_contents('https://api.telegram.org/bot'.getenv('bot_token').'/sendMessage?chat_id='.$chatid.'&text='.urlencode($text));
     };
     function SendMessageWithMarkdown($chatid, $text) {
-        $response = file_get_contents('https://api.telegram.org/bot'.getenv('bot_token').'/sendMessage?chat_id='.$chatid.'&text='.urlencode($text).'&parse_mode=markdown');
+        $response = file_get_contents('https://api.telegram.org/bot'.getenv('bot_token').'/sendMessage?chat_id='.$chatid.'&text='.urlencode($text).'&parse_mode=markdown&disable_web_page_preview=true');
     };
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -33,6 +33,7 @@
 
         if ($lowermsg == '/start') {
             SendMessageWithMarkdown($msg_chatid, 'Это бот для АНОНИМНОЙ отправки "подслушано" из сш№185 в канал @podslushano185. На канеле разрешены буллинг, травля, использование нецензурной лексики итд. Любая модерация отсутствует в связи с либертарианско-анархистскими убеждениями создателя и администра. Запрещено отправлять сообщения с админским хештегом (#Админ, #Адмін и #Admin. Их может отправлять только админ. Для отправки сообщений ему лично используйте хештеги #Админу, #Адміну либо #toAdmin. Бот иммет полностью открытый исходный код. Посмотреть его можно [тут](https://github.com/Futupas/podslushano185tgbot).');
+            exit(0);
         }
 
         if (strpos($lowermsg, '#админу') !== false || strpos($lowermsg, '#адміну') !== false || strpos($lowermsg, '#toadmin') !== false) {
