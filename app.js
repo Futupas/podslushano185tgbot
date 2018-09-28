@@ -2,7 +2,7 @@ function sendMessage() {
 
     var xhr = new XMLHttpRequest();
 
-    xhr.open('GET', 'formbot.php', true);
+    xhr.open('GET', 'formbot.php?message='+encodeURI(document.getElementById('maintext').innerText), true);
 
     xhr.send();
 

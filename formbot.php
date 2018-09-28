@@ -19,8 +19,7 @@
     
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         
-
-        $msg = $_GET['message'];
+        $msg = urldecode($_GET['message']);
         $lowermsg = strtolower_my($msg);
 
         if ($lowermsg == '/start') {
